@@ -43,3 +43,4 @@
     * use authentication
 14. Logout
 15. Authorize middleware
+16. Dynamic navigation
