@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
 const { isAuth } = require('../middlewares/auth');
+const { getErrorMessage } = require('../utils/errorUtils');
 
 router.get('/login', (req, res) => {
 	res.render('auth/login');
@@ -13,7 +14,9 @@ router.post('/login', async (req, res) => {
 		res.cookie('auth', token);
 		res.redirect('/');
 	} catch (error) {
-		return res.status(404).render('auth/login', { error: error.message });
+		return res
+			.status(404)
+			.render('auth/login', { error: getErrorMessage(error) });
 	}
 });
 
@@ -33,9 +36,8 @@ router.post('/register', async (req, res) => {
 		res.cookie('auth', token);
 		res.redirect('/');
 	} catch (error) {
-		res.status(400).render('auth/register', { error: error.message });
+		res.status(400).render('auth/register', { error: getErrorMessage(error) });
 	}
-	res.redirect('/');
 });
 
 router.get('/logout', isAuth, (req, res) => {

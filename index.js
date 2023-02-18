@@ -2,9 +2,9 @@ const express = require('express');
 const handlebars = require('express-handlebars');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-
 const routes = require('./routes');
 const { authentication } = require('./middlewares/auth');
+
 const app = express();
 
 app.engine('hbs', handlebars.engine({ extname: '.hbs' }));

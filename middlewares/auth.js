@@ -1,5 +1,5 @@
-const jwt = require('../lib/jwt');
-const { SECRET } = require('../constants');
+const jwt = require('../utils/jwt');
+const { SECRET } = require('../utils/constants');
 
 exports.authentication = async (req, res, next) => {
 	const token = req.cookies.auth;
@@ -11,7 +11,7 @@ exports.authentication = async (req, res, next) => {
 			res.locals.user = decodedToken;
 		} catch (err) {
 			res.clearCookie('auth');
-			return res.status(401).render('home/404');
+			return res.status(401).render('home/404', { errors: err.message });
 		}
 	}
 	next();
@@ -19,7 +19,7 @@ exports.authentication = async (req, res, next) => {
 
 exports.isAuth = (req, res, next) => {
 	if (!req.user) {
-		return res.redirect('/');
+		return res.redirect('/login');
 	}
 	next();
 };

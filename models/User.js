@@ -1,17 +1,22 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-	username: { type: String, required: true },
-	email: { type: String, required: true },
-	password: { type: String, required: true },
+    username: {
+        type: String,
+        required: [true, "Username is required"],
+        minLength: [5, "Too short password"],
+        unique: true
+    },
+    email: {
+        type: String,
+        required: [true, "Email is required"],
+        validation: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Invalid email address"]
+    },
+    password: {
+        type: String,
+        required: [true, "Password is required"],
+    }
 });
-
-// userSchema.virtual('confirmPassword').set(function (value) {
-// 	if (this.password !== value) {
-// 		throw new mongoose.Error('Passwords do not match!');
-// 	}
-// });
-
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
