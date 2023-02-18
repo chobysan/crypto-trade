@@ -30,4 +30,16 @@
 8. Add auth service
 9. Install bcrypt and cookie-parser
     * npm i bcrypt cookie-parser
-10. Register
+10. Register user
+    * validate repeat password
+    * use bcrypt to hash password
+12. Generate jwt token
+    * npm i jsonwebtoken
+    * OPTIONAL: use util.promisify to use async
+    * generate token with payload
+    * add token to cookie
+13. Add auth middleware
+    * add decoded token
+    * use authentication
+14. Logout
+15. Authorize middleware
