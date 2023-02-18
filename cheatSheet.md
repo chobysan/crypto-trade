@@ -44,3 +44,6 @@
 14. Logout
 15. Authorize middleware
 16. Dynamic navigation
+17. Error handling (local error handling)
+18. Add notification to main layout
+19. Add error notification to layout

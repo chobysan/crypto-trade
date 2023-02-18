@@ -17,6 +17,7 @@ exports.register = async (username, email, password, confirmPassword) => {
 	}
 	const hashedPassword = await bcrypt.hash(password, 10);
 	await User.create({ username, email, password: hashedPassword });
+	return this.login(email,password)
 };
 
 exports.login = async (email, password) => {
