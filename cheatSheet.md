@@ -21,5 +21,13 @@
     * npm i mongoose
     * set strict query
 6. Authentication
-    * add login page
+    * fix html links in layout
     * add auth controller
+    * add register page
+    * add post register action
+    * add login page
+7. Add user model
+8. Add auth service
+9. Install bcrypt and cookie-parser
+    * npm i bcrypt cookie-parser
+10. Register
